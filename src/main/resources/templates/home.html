@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Makeup</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="cabecalho">
+
+           
+            <div class="logo">
+
+                <a href="/">
+
+                    <img
+                        src="/img/logo.png"
+                        alt="Loja Makeup"
+                        class="logo-img">
+
+                </a>
+
+            </div>
+
+            <div class="barra-busca">
+
+                <form
+                    class="form-busca"
+                    action="/buscar"
+                    method="get">
+
+                    <input
+                        class="input-busca"
+                        type="text"
+                        name="titulo"
+                        placeholder="Buscar produto">
+
+                    <button
+                        class="btn-busca"
+                        type="submit">
+
+                        Buscar
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <nav class="menu">
+
+                <!-- Usuário não logado -->
+
+                <div th:if="${usuario == null}">
+
+                    <a
+                        class="menu-link"
+                        href="/login">
+
+                        Login
+
+                    </a>
+
+                    <a
+                        class="menu-link"
+                        href="/cadastro">
+
+                        Cadastro
+
+                    </a>
+
+                </div>
+
+                <!-- Usuário logado -->
+
+                <div
+                class="usuario-logado"
+                th:if="${usuario != null}">
+
+                    <span class="nome-usuario">
+
+                        Olá,
+                        <span th:text="${usuario.nome}"></span>
+
+                    </span>
+
+                    <div class="links-usuario">
+
+                        <a
+                            class="menu-link"
+                            th:if="${usuario.perfil == 'ADMIN'}"
+                            href="/admin">
+
+                            Painel Administrativo
+
+                        </a>
+
+                        <a
+                            class="menu-link"
+                            href="/logout">
+
+                            Logout
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+        </header>
+        
+         <div class="carousel">
+                <button
+                class="carousel-btn prev"
+                onclick="bannerAnterior()">
+
+                    ❮
+
+                </button>
+
+                <img id="banner-img"
+                src="/img/banners/banner1.jpg" 
+                alt="Banner">
+
+                <button class="carousel-btn next"
+                onclick="proximoBanner()">
+
+                    ❯
+
+                </button>
+
+            </div>
+
+        <main class="conteudo">
+
+            <div class="titulo-pagina">
+
+                <h2>
+
+                    Produtos
+
+                </h2>
+
+            </div>
+
+            <div class="lista-produtos">
+
+                <div
+                    class="card-produto"
+                    th:each="produto : ${lista}">
+
+                    <div class="produto-imagem">
+
+                        <img
+                            th:src="@{'/img/' + ${produto.img}}"
+                            alt="Produto"
+                            width="200">
+
+                    </div>
+
+                    <div class="produto-info">
+
+                        <h3
+                            class="produto-titulo"
+                            th:text="${produto.titulo}">
+                        </h3>
+
+                        <p class="produto-preco">
+
+                            R$
+                            <span
+                                th:text="${produto.preco}">
+                            </span>
+
+                        </p>
+
+                        <a
+                            class="btn-detalhes"
+                            th:href="@{'/produto/' + ${produto.id}}">
+
+                            Ver Detalhes
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+    <a
+        href="#"
+        onclick="abrirCarrinho(); return false;"
+        class="carrinho-flutuante">
+
+        <i class="bi bi-cart3"></i>
+
+        <span
+            class="contador-carrinho"
+            th:if="${quantidadeCarrinho > 0}"
+            th:text="${quantidadeCarrinho}">
+        </span>
+
+    </a>
+
+    <div
+        id="miniCarrinho"
+        class="mini-carrinho">
+
+        <div class="topo-carrinho">
+
+            <h2>
+                Meu Carrinho
+            </h2>
+
+            <button
+                type="button"
+                onclick="fecharCarrinho()">
+
+                ✖
+
+            </button>
+
+        </div>
+
+        <div class="itens-carrinho">
+
+            <div
+                class="mini-item"
+                th:each="item : ${carrinho}">
+
+                <img
+                    class="mini-item-img"
+                    th:src="@{'/img/' + ${item.produto.img}}"
+                    th:alt="${item.produto.titulo}">
+
+                <div class="mini-item-info">
+
+                    <h4
+                        th:text="${item.produto.titulo}">
+                    </h4>
+
+                    <p>
+
+                        Quantidade:
+                        <span
+                            th:text="${item.quantidade}">
+                        </span>
+
+                    </p>
+
+                    <p>
+
+                        R$
+                        <span
+                            th:text="${item.produto.preco}">
+                        </span>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <a
+            href="/carrinho"
+            class="btn-ver-carrinho">
+
+            VER CARRINHO
+
+        </a>
+
+    </div>
+
+    <script
+        th:src="@{/js/script.js}">
+    </script>
+
+</body>
+</html>

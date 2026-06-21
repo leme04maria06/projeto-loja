@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuário</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="container-form">
+
+        <div class="card-form">
+
+            <h1>Editar Usuário</h1>
+
+            <form
+                class="form-usuario"
+                action="/admin/usuario/atualizar"
+                method="post">
+
+                <input
+                    type="hidden"
+                    name="id"
+                    th:value="${usuario.id}">
+
+                <div class="campo">
+
+                    <label>Nome</label>
+
+                    <input
+                        type="text"
+                        name="nome"
+                        th:value="${usuario.nome}"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        th:value="${usuario.email}"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Telefone</label>
+
+                    <input
+                        type="text"
+                        name="telefone"
+                        th:value="${usuario.telefone}"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Senha</label>
+
+                    <input
+                        type="text"
+                        name="senha"
+                        th:value="${usuario.senha}"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Perfil</label>
+
+                    <select name="perfil">
+
+                        <option
+                            value="CLIENTE"
+                            th:selected="${usuario.perfil == 'CLIENTE'}">
+
+                            CLIENTE
+
+                        </option>
+
+                        <option
+                            value="ADMIN"
+                            th:selected="${usuario.perfil == 'ADMIN'}">
+
+                            ADMIN
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    class="btn-atualizar"
+                    type="submit">
+
+                    Salvar Alterações
+
+                </button>
+
+            </form>
+
+            <br>
+
+            <a
+                class="btn-cancelar"
+                href="/admin/usuarios">
+
+                Cancelar
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

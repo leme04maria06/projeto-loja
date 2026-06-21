@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="container-carrinho">
+
+        <h1>
+            Meu Carrinho
+        </h1>
+
+        <div
+            class="item-carrinho"
+            th:each="item : ${carrinho}">
+           <img
+                class="img-carrinho"
+                th:src="@{'/img/' + ${item.produto.img}}"
+                th:alt="${item.produto.titulo}">
+            <h3
+                th:text="${item.produto.titulo}">
+            </h3>
+
+            <p>
+
+                Quantidade:
+                <span
+                    th:text="${item.quantidade}">
+                </span>
+
+            </p>
+
+            <p>
+
+                R$
+                <span
+                    th:text="${item.produto.preco}">
+                </span>
+
+            </p>
+            
+            <a
+                class="btn-excluir"
+                th:href="@{'/carrinho/remover/' + ${item.produto.id}}">
+
+                Remover
+
+            </a>
+        </div>
+        <h2>
+
+                Total:
+                R$
+                <span
+                    th:text="${total}">
+                </span>
+
+            </h2>
+        <a
+            href="/"
+            class="btn-voltar-loja">
+
+            ← Continuar Comprando
+
+        </a>
+
+    </div>
+
+</body>
+</html>

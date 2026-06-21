@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Conta</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="container-cadastro">
+
+        <div class="card-cadastro">
+            
+            <h1>
+                CRIAR CONTA
+            </h1>
+
+            <p class="texto-obrigatorio">
+                (*) Campos obrigatórios
+            </p>
+
+            <form
+                class="form-cadastro"
+                th:action="@{/cadastro}"
+                method="post">
+
+                <div class="campo">
+
+                    <label>
+                        Nome*
+                    </label>
+
+                    <input
+                        type="text"
+                        name="nome"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>
+                        E-mail*
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>
+                        Telefone*
+                    </label>
+
+                    <input
+                        type="text"
+                        name="telefone"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>
+                        Senha*
+                    </label>
+
+                    <input
+                        type="password"
+                        name="senha"
+                        required>
+
+                </div>
+
+                <div class="mensagem-erro">
+
+                    <p
+                        th:if="${msgErro}"
+                        th:text="${msgErro}">
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn-cadastro"
+                    type="submit">
+
+                    CRIAR CONTA
+
+                </button>
+
+            </form>
+
+            <a
+                class="link-login"
+                href="/login">
+
+                Já possui uma conta? Faça login
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

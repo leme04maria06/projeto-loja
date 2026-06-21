@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="container-form">
+
+        <div class="card-form">
+
+            <h1>Editar Produto</h1>
+
+            <form
+                class="form-produto"
+                action="/admin/produto/atualizar"
+                method="post"
+                enctype="multipart/form-data">
+
+                <input
+                    type="hidden"
+                    name="id"
+                    th:value="${produto.id}">
+
+                <div class="campo">
+
+                    <label>Título</label>
+
+                    <input
+                        type="text"
+                        name="titulo"
+                        th:value="${produto.titulo}"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Descrição</label>
+
+                    <textarea
+                        name="descricao"
+                        required
+                        th:text="${produto.descricao}">
+                    </textarea>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Preço</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        name="preco"
+                        th:value="${produto.preco}"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Imagem Atual</label>
+
+                    <img
+                        th:src="@{'/img/' + ${produto.img}}"
+                        alt="Produto"
+                        width="150">
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Nova Imagem</label>
+
+                    <input
+                        type="file"
+                        name="arquivo"
+                        accept="image/*">
+
+                </div>
+
+                <button
+                    class="btn-atualizar"
+                    type="submit">
+
+                    Atualizar
+
+                </button>
+
+            </form>
+
+            <br>
+
+            <a
+                class="btn-cancelar"
+                href="/admin/produtos">
+
+                Cancelar
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

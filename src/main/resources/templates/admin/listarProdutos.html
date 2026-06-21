@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Produtos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="container-produtos">
+
+        <div class="topo-produtos">
+
+            <h1>
+                Gerenciar Produtos
+            </h1>
+
+            <div class="acoes-topo">
+
+                <a
+                    class="btn-voltar"
+                    href="/admin">
+
+                    Voltar ao Painel
+
+                </a>
+
+                <a
+                    class="btn-novo"
+                    href="/admin/produto/novo">
+
+                    Novo Produto
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="tabela-container">
+
+            <table class="tabela-produtos">
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Imagem</th>
+                    <th>Título</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+
+                </tr>
+
+                <tr th:each="produto : ${lista}">
+
+                    <td th:text="${produto.id}"></td>
+
+                    <td>
+
+                        <img
+                            th:src="@{'/img/' + ${produto.img}}"
+                            width="80">
+
+                    </td>
+
+                    <td th:text="${produto.titulo}"></td>
+
+                    <td>
+
+                        R$
+                        <span
+                            th:text="${produto.preco}">
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="btn-editar"
+                            th:href="@{'/admin/produto/editar/' + ${produto.id}}">
+
+                            Editar
+
+                        </a>
+
+                        <a
+                            class="btn-excluir"
+                            th:href="@{'/admin/produto/excluir/' + ${produto.id}}"
+                            onclick="return confirm('Deseja realmente excluir este produto?')">
+
+                            Excluir
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados da Busca</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="cabecalho">
+
+            <div class="logo">
+
+                <h1>Loja Makeup</h1>
+
+            </div>
+
+            <div class="barra-busca">
+
+                <form
+                    class="form-busca"
+                    action="/buscar"
+                    method="get">
+
+                    <input
+                        class="input-busca"
+                        type="text"
+                        name="titulo"
+                        placeholder="Buscar produto">
+
+                    <button
+                        class="btn-busca"
+                        type="submit">
+
+                        Buscar
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <nav class="menu">
+
+                <div th:if="${usuario == null}">
+
+                    <a
+                        class="menu-link"
+                        href="/login">
+
+                        Login
+
+                    </a>
+
+                    <a
+                        class="menu-link"
+                        href="/cadastro">
+
+                        Cadastro
+
+                    </a>
+
+                </div>
+
+                <div th:if="${usuario != null}">
+
+                    <span>
+
+                        Olá,
+                        <span th:text="${usuario.nome}"></span>
+
+                    </span>
+
+                    <a
+                        class="menu-link"
+                        href="/logout">
+
+                        Logout
+
+                    </a>
+
+                    <a
+                        class="menu-link"
+                        href="/admin"
+                        th:if="${usuario.perfil == 'ADMIN'}">
+
+                        Painel Administrativo
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </header>
+
+        <main class="conteudo">
+
+            <div class="titulo-pagina">
+
+                <h2>
+
+                    Resultados da Busca
+
+                </h2>
+
+            </div>
+
+            <div
+                class="sem-resultados"
+                th:if="${#lists.isEmpty(lista)}">
+
+                <p>
+
+                    Nenhum produto encontrado.
+
+                </p>
+
+            </div>
+
+            <div class="lista-produtos">
+
+                <div
+                    class="card-produto"
+                    th:each="produto : ${lista}">
+
+                    <div class="produto-imagem">
+
+                        <img
+                            th:src="@{'/img/' + ${produto.img}}"
+                            alt="Produto"
+                            width="200">
+
+                    </div>
+
+                    <div class="produto-info">
+
+                        <h3
+                            class="produto-titulo"
+                            th:text="${produto.titulo}">
+                        </h3>
+
+                        <p class="produto-preco">
+
+                            R$
+                            <span
+                                th:text="${produto.preco}">
+                            </span>
+
+                        </p>
+
+                        <a
+                            class="btn-detalhes"
+                            th:href="@{'/produto/' + ${produto.id}}">
+
+                            Ver Detalhes
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

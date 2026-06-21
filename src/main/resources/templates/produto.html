@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${produto.titulo}"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="container-produto">
+
+        <a
+            class="link-voltar"
+            href="/">
+
+            ← Voltar para a Loja
+
+        </a>
+
+        <div class="produto-detalhe">
+
+            <div class="produto-imagem-grande">
+
+                <img
+                    th:src="@{'/img/' + ${produto.img}}"
+                    th:alt="${produto.titulo}">
+
+            </div>
+
+            <div class="produto-info">
+
+                <h1
+                    class="titulo-produto-detalhe"
+                    th:text="${produto.titulo}">
+                </h1>
+
+                <p class="preco-produto-detalhe">
+
+                    R$
+                    <span th:text="${produto.preco}"></span>
+
+                </p>
+
+                <div
+                    class="descricao-produto-detalhe"
+                    th:text="${produto.descricao}">
+                </div>
+
+
+                <form
+                th:action="@{'/carrinho/adicionar/' + ${produto.id}}"
+                method="post">
+
+                    <div class="quantidade-container">
+
+                        <label>
+                            Quantidade
+                        </label>
+
+                        <input
+                            type="number"
+                            name="quantidade"
+                            value="1"
+                            min="1"
+                            class="input-quantidade">
+
+                    </div>
+
+                    <button
+                        class="btn-carrinho"
+                        type="submit">
+
+                        ADICIONAR AO CARRINHO
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+    <a
+        href="/carrinho"
+        class="carrinho-flutuante">
+
+        <i class="bi bi-cart3"></i>
+        <span
+            class="contador-carrinho"
+            th:if="${quantidadeCarrinho > 0}"
+            th:text="${quantidadeCarrinho}">
+        </span>
+    </a>
+</body>
+</html>
