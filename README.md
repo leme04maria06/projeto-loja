@@ -4,7 +4,7 @@ Uma loja virtual desenvolvida como projeto final da disciplina **Fundamentos de 
 
 ## 📷 Demonstração
 
-> Adicione aqui prints da tela inicial, catálogo de produtos, página de detalhes e painel administrativo.
+
 
 ## ✨ Funcionalidades
 
