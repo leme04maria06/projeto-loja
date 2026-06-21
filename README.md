@@ -3,7 +3,7 @@
 Uma loja virtual desenvolvida como projeto final da disciplina **Fundamentos de Programação para Web**. O sistema permite o cadastro e gerenciamento de produtos de maquiagem, oferecendo uma interface intuitiva para navegação e administração da loja.
 
 ## 📷 Demonstração
-### Página inicial
+### Página inicial:
 
 ![Página inicial](images/print-inicial2.png)
 
@@ -11,13 +11,13 @@ Uma loja virtual desenvolvida como projeto final da disciplina **Fundamentos de 
 
 ![Página inicial](images/print-inicial4.png)
 
-### Catálogo de produtos
+### Catálogo de produtos:
 
 ![Catálogo](images/print4.png)
 
 ![Catálogo](images/print20.png)
 
-### Detalhes de produtos
+### Detalhes de produtos:
 ![Detalhes](images/print7.png)
 
 
