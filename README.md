@@ -7,9 +7,9 @@ Uma loja virtual desenvolvida como projeto final da disciplina **Fundamentos de 
 
 ![Página inicial](images/print-inicial2.png)
 
-![Página inicial](imagens/print-inicial3.png)
+![Página inicial](images/print-inicial3.png)
 
-![Página inicial](imagens/print-inicial4.png)
+![Página inicial](images/print-inicial4.png)
 
 ### Catálogo de produtos
 
