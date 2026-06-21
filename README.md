@@ -13,8 +13,6 @@ Uma loja virtual desenvolvida como projeto final da disciplina **Fundamentos de 
 
 ### Catálogo de produtos
 
-![Catálogo](images/print19.png)
-
 ![Catálogo](images/print4.png)
 
 ![Catálogo](images/print20.png)
